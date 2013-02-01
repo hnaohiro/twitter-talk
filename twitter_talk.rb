@@ -6,11 +6,13 @@ require 'yaml'
 require 'pp'
 require 'kconv'
 require 'facter'
+require 'MeCab'
 
 class TwitterTalk
   def initialize()
     @client = init_tweetstream
     @accounts = YAML.load_file('./config/accounts.yaml')
+    @mecab = MeCab::Tagger.new('-Oyomi')
   end
 
   def init_tweetstream
@@ -49,6 +51,9 @@ class TwitterTalk
     @accounts.each do |key, value|
       text.gsub!(/#{key}/, value + 'へ')
     end  
+
+    # convert to katakana
+    text = mecab.parse(text)
 
     # split text
     max = 100

@@ -18,6 +18,8 @@ Requirements
 
     `gem install facter`
 
+* mecab, mecab-ruby
+
 * 読み上げソフト
 
     Windows: [SofTalk](http://www35.atwiki.jp/softalk/)
