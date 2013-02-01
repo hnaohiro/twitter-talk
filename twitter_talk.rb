@@ -53,7 +53,7 @@ class TwitterTalk
     end  
 
     # convert to katakana
-    text = mecab.parse(text)
+    text = @mecab.parse(text)
 
     # split text
     max = 100
